@@ -1,0 +1,32 @@
+# Taking number of queens as input from user
+print ("Enter the number of queens")
+N = int(input())
+# here we create a chessboard
+# NxN matrix with all elements set to 0
+board = [[0]*N for _ in range(N)]
+def attack(i, j):
+***1tab***#checking vertically and horizontally
+***1tab***for k in range(0,N):
+***2tab***if board[i][k]==1 or board[k][j]==1:
+***3tab***return True
+***1tab***#checking diagonally
+***1tab***for k in range(0,N):
+***2tab***for l in range(0,N):
+***3tab***if (k+l==i+j) or (k-l==i-j):
+***4tab***if board[k][l]==1:
+***5tab***return True
+***1tab***return False
+def N_queens(n):
+***1tab***if n==0:
+***2tab***return True
+***1tab***for i in range(0,N):
+***2tab***for j in range(0,N):
+***3tab***if (not(attack(i,j))) and (board[i][j]!=1):
+***4tab***board[i][j] = 1
+***4tab***if N_queens(n-1)==True:
+***5tab***return True
+***4tab***board[i][j] = 0
+***1tab***return False
+N_queens(N)
+for i in board:
+***1tab***print (i)
